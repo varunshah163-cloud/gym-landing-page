@@ -79,6 +79,7 @@
     <!--CTA-->
     <section id="cta" class="cta">
       <h2>Start Your Fitness Journey Today</h2>
+      <p>Join FitZone Gym and transform your body</p>
       <a href="#contact" class="btn">Join Now</a>
     </section>
 
@@ -86,7 +87,13 @@
     <section id="contact" class="contact">
       <div class="container">
         <h2>Contact Us</h2>
-        <form name="contact" method="POST" data-netlify="true">
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify
+          action="/success.html"
+        >
           <input type="hidden" name="form-name" value="contact" />
           <input type="text" name="name" placeholder="Your Name" required />
           <input type="email" name="email" placeholder="Your Email" />
@@ -100,5 +107,7 @@
     <footer>
       <p>© 2026 FitZone Gym. All rights reserved.</p>
     </footer>
+
+    <script src="script.js"></script>
   </body>
 </html>
