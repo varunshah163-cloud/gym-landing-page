@@ -179,6 +179,11 @@ button {
   background: white;
 }
 
+.about {
+  background: #f9fafb;
+  text-align: center;
+}
+
 .services h2 {
   margin-bottom: 40px;
 }
