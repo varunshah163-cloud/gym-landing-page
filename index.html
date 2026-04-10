@@ -2,16 +2,22 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
+    />
+    <meta
+      name="description"
+      content="FitZone Gym - Transform your body in 90 days. Join the #1 gym in Mumbai with expert trainers and 24/7 access."
+    />
     <title>FitZone Gym | Transform Your Body in 90 Days</title>
-    <link rel="stylesheet" href="style.css" />
 
     <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <!-- Font Awesome for icons -->
+    <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -34,16 +40,28 @@
         padding: 0;
         box-sizing: border-box;
         font-family: "Poppins", sans-serif;
+        -webkit-tap-highlight-color: transparent;
       }
 
       html {
         scroll-behavior: smooth;
+        font-size: 16px;
+        overflow-x: hidden;
       }
 
       body {
         line-height: 1.6;
         background: #f9fafb;
+        color: var(--dark);
         overflow-x: hidden;
+        width: 100%;
+        position: relative;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
       }
 
       a,
@@ -52,80 +70,78 @@
         text-decoration: none;
       }
 
-      /* UTILITY CLASSES */
+      /* Container - Mobile First */
       .container {
-        width: 90%;
-        margin: auto;
+        width: 92%;
         max-width: 1200px;
-      }
-
-      .section-header {
-        text-align: center;
-        margin-bottom: 50px;
-      }
-
-      .section-header h2 {
-        font-size: 2.5rem;
-        color: var(--dark);
-        margin-bottom: 15px;
-        font-weight: 700;
-      }
-
-      .section-header p {
-        color: var(--gray);
-        font-size: 1.1rem;
-        max-width: 600px;
         margin: 0 auto;
+        padding: 0 4%;
       }
 
-      /* NAVBAR - Enhanced with blur */
+      /* Navigation - Fixed & Responsive */
       .navbar {
         position: fixed;
         top: 0;
         width: 100%;
-        background: rgba(15, 23, 42, 0.95);
+        background: rgba(15, 23, 42, 0.98);
         backdrop-filter: blur(20px);
         z-index: 1000;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s;
       }
 
       .nav-container {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 18px 0;
+        padding: 1rem 0;
+        position: relative;
       }
 
       .logo {
         color: white;
-        font-size: 1.8rem;
+        font-size: 1.5rem;
         font-weight: 800;
         display: flex;
         align-items: center;
         gap: 8px;
+        z-index: 1001;
       }
 
       .logo i {
         color: var(--primary);
       }
 
+      /* Mobile Menu Toggle */
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 1001;
+        width: 44px;
+        height: 44px;
+        align-items: center;
+        justify-content: center;
+      }
+
       .nav-links {
         display: flex;
         align-items: center;
-        gap: 30px;
+        gap: 2rem;
+        list-style: none;
+        transition: all 0.3s ease;
       }
 
       .nav-links a {
         color: rgba(255, 255, 255, 0.9);
-        text-decoration: none;
         font-size: 0.95rem;
         font-weight: 500;
         position: relative;
         transition: 0.3s;
-      }
-
-      .nav-links a:hover {
-        color: white;
+        white-space: nowrap;
       }
 
       .nav-links a::after {
@@ -150,6 +166,7 @@
         color: white !important;
         font-weight: 600;
         transition: all 0.3s;
+        display: inline-block;
       }
 
       .nav-btn:hover {
@@ -162,81 +179,90 @@
         display: none !important;
       }
 
-      /* HERO - Enhanced with gradient overlay and trust badges */
+      /* Hero Section */
       .hero {
+        min-height: 100vh;
         background:
-          linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.7)),
+          linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.8)),
           url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920")
             no-repeat center/cover;
-        height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
-        padding-top: 80px;
+        padding: 100px 20px 60px;
         position: relative;
       }
 
       .hero-content {
-        position: relative;
-        z-index: 2;
-        color: white;
         max-width: 800px;
-        padding: 0 20px;
+        animation: fadeInUp 1s ease;
       }
 
       .hero-badge {
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
         background: rgba(255, 77, 77, 0.2);
         border: 1px solid rgba(255, 77, 77, 0.5);
         padding: 8px 20px;
         border-radius: 50px;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         margin-bottom: 20px;
         color: var(--primary);
         font-weight: 600;
         backdrop-filter: blur(10px);
+        flex-wrap: wrap;
+        justify-content: center;
       }
 
       .hero h1 {
         line-height: 1.2;
-        font-size: 3.8rem;
+        font-size: clamp(2rem, 5vw, 3.8rem);
         font-weight: 800;
         margin-bottom: 20px;
+        color: white;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
       }
 
       .hero h1 span {
         color: var(--primary);
-        position: relative;
       }
 
       .hero p {
-        max-width: 600px;
         color: rgba(255, 255, 255, 0.9);
         margin: 0 auto 30px;
-        font-size: 1.2rem;
+        font-size: clamp(1rem, 2vw, 1.2rem);
         font-weight: 300;
+        max-width: 600px;
       }
 
       .hero-cta {
         display: flex;
-        gap: 20px;
+        gap: 15px;
         justify-content: center;
         flex-wrap: wrap;
         margin-bottom: 40px;
       }
 
-      .btn-primary {
-        display: inline-block;
-        background: var(--primary);
-        color: white;
-        padding: 16px 40px;
+      .btn-primary,
+      .btn-secondary {
+        padding: 14px 32px;
         border-radius: 50px;
         font-weight: 600;
-        font-size: 1.1rem;
+        font-size: 1rem;
         transition: all 0.3s;
-        border: 2px solid var(--primary);
+        border: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        color: white;
+        box-shadow: 0 4px 15px rgba(255, 77, 77, 0.3);
       }
 
       .btn-primary:hover {
@@ -246,14 +272,8 @@
       }
 
       .btn-secondary {
-        display: inline-block;
         background: transparent;
         color: white;
-        padding: 16px 40px;
-        border-radius: 50px;
-        font-weight: 600;
-        font-size: 1.1rem;
-        transition: all 0.3s;
         border: 2px solid rgba(255, 255, 255, 0.3);
       }
 
@@ -267,27 +287,28 @@
       .trust-badges {
         display: flex;
         justify-content: center;
-        gap: 40px;
+        gap: 30px;
         flex-wrap: wrap;
         margin-top: 40px;
-        padding-top: 40px;
+        padding-top: 30px;
         border-top: 1px solid rgba(255, 255, 255, 0.1);
       }
 
       .trust-item {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 8px;
         color: rgba(255, 255, 255, 0.9);
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+        white-space: nowrap;
       }
 
       .trust-item i {
         color: var(--primary);
-        font-size: 1.2rem;
+        font-size: 1.1rem;
       }
 
-      /* STATS SECTION - Like Equinox/Gold's Gym */
+      /* Stats Section */
       .stats {
         background: var(--dark);
         padding: 60px 0;
@@ -295,37 +316,10 @@
         overflow: hidden;
       }
 
-      .stats::before {
-        content: "";
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(
-          circle,
-          rgba(255, 77, 77, 0.1) 0%,
-          transparent 70%
-        );
-        animation: pulse 4s ease-in-out infinite;
-      }
-
-      @keyframes pulse {
-        0%,
-        100% {
-          transform: scale(1);
-          opacity: 0.5;
-        }
-        50% {
-          transform: scale(1.1);
-          opacity: 0.8;
-        }
-      }
-
       .stats-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 40px;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 30px;
         position: relative;
         z-index: 1;
       }
@@ -336,7 +330,7 @@
       }
 
       .stat-number {
-        font-size: 3rem;
+        font-size: clamp(2rem, 4vw, 3rem);
         font-weight: 800;
         color: var(--primary);
         display: block;
@@ -344,15 +338,38 @@
       }
 
       .stat-label {
-        font-size: 1rem;
+        font-size: 0.9rem;
         color: rgba(255, 255, 255, 0.8);
-        margin-top: 10px;
+        margin-top: 8px;
         font-weight: 500;
       }
 
-      /* ABOUT - Enhanced with image */
+      /* Section Headers */
+      .section {
+        padding: 80px 0;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .section-header h2 {
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        color: var(--dark);
+        margin-bottom: 15px;
+        font-weight: 700;
+      }
+
+      .section-header p {
+        color: var(--gray);
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* About Section */
       .about {
-        padding: 100px 0;
         background: white;
       }
 
@@ -364,7 +381,7 @@
       }
 
       .about-text h2 {
-        font-size: 2.8rem;
+        font-size: clamp(1.8rem, 3vw, 2.8rem);
         color: var(--dark);
         margin-bottom: 20px;
         line-height: 1.2;
@@ -373,14 +390,14 @@
       .about-text p {
         color: var(--gray);
         margin-bottom: 20px;
-        font-size: 1.1rem;
+        font-size: 1.05rem;
       }
 
       .about-features {
         display: flex;
         flex-direction: column;
         gap: 15px;
-        margin-top: 30px;
+        margin: 30px 0;
       }
 
       .feature-item {
@@ -392,6 +409,7 @@
       .feature-icon {
         width: 50px;
         height: 50px;
+        min-width: 50px;
         background: rgba(255, 77, 77, 0.1);
         border-radius: 12px;
         display: flex;
@@ -410,42 +428,40 @@
 
       .about-image img {
         width: 100%;
-        height: 100%;
+        height: auto;
         object-fit: cover;
-        display: block;
       }
 
       .experience-badge {
         position: absolute;
         bottom: 30px;
-        left: -30px;
+        left: -20px;
         background: var(--primary);
         color: white;
-        padding: 20px 30px;
+        padding: 15px 25px;
         border-radius: 15px;
         box-shadow: 0 10px 30px rgba(255, 77, 77, 0.4);
       }
 
       .experience-badge .years {
-        font-size: 2.5rem;
+        font-size: 2rem;
         font-weight: 800;
         line-height: 1;
       }
 
       .experience-badge .text {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         font-weight: 500;
       }
 
-      /* SERVICES - Enhanced cards */
+      /* Services */
       .services {
-        padding: 100px 0;
         background: #f8fafc;
       }
 
       .cards {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
         gap: 30px;
         margin-top: 50px;
       }
@@ -493,26 +509,20 @@
         justify-content: center;
         margin: 0 auto 20px;
         font-size: 2.5rem;
+        color: var(--primary);
         transition: all 0.3s;
       }
 
       .card:hover .card-icon {
         background: var(--primary);
-        transform: rotate(5deg) scale(1.1);
-      }
-
-      .card:hover .card-icon i {
         color: white;
-      }
-
-      .card-icon i {
-        color: var(--primary);
+        transform: rotate(5deg) scale(1.1);
       }
 
       .card h3 {
         margin-bottom: 15px;
         color: var(--dark);
-        font-size: 1.4rem;
+        font-size: 1.3rem;
       }
 
       .card p {
@@ -521,15 +531,14 @@
         line-height: 1.7;
       }
 
-      /* PRICING SECTION - Like Planet Fitness/F45 */
+      /* Pricing */
       .pricing {
-        padding: 100px 0;
         background: white;
       }
 
       .pricing-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 30px;
         max-width: 1000px;
         margin: 0 auto;
@@ -539,7 +548,7 @@
         background: white;
         border: 2px solid var(--gray-light);
         border-radius: 20px;
-        padding: 40px;
+        padding: 40px 30px;
         text-align: center;
         transition: all 0.3s;
         position: relative;
@@ -547,8 +556,13 @@
 
       .pricing-card.featured {
         border-color: var(--primary);
-        transform: scale(1.05);
         box-shadow: 0 20px 60px rgba(255, 77, 77, 0.15);
+      }
+
+      @media (min-width: 968px) {
+        .pricing-card.featured {
+          transform: scale(1.05);
+        }
       }
 
       .pricing-badge {
@@ -560,8 +574,9 @@
         color: white;
         padding: 5px 20px;
         border-radius: 20px;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         font-weight: 600;
+        white-space: nowrap;
       }
 
       .pricing-card h3 {
@@ -570,27 +585,27 @@
         margin-bottom: 10px;
       }
 
-      .pricing-card .price {
-        font-size: 3.5rem;
+      .price {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
         font-weight: 800;
         color: var(--dark);
         margin: 20px 0;
         position: relative;
-        display: inline-block;
+        display: inline-flex;
+        align-items: flex-start;
       }
 
-      .pricing-card .price span {
+      .price .currency {
+        font-size: 1.5rem;
+        margin-top: 5px;
+      }
+
+      .price .period {
         font-size: 1rem;
         color: var(--gray);
-        position: absolute;
-        top: 10px;
-        left: -20px;
-      }
-
-      .pricing-card .price .period {
-        font-size: 1.1rem;
-        color: var(--gray);
         font-weight: 400;
+        align-self: flex-end;
+        margin-bottom: 8px;
       }
 
       .pricing-features {
@@ -600,12 +615,13 @@
       }
 
       .pricing-features li {
-        padding: 10px 0;
+        padding: 12px 0;
         color: var(--gray);
         border-bottom: 1px solid var(--gray-light);
         display: flex;
         align-items: center;
         gap: 10px;
+        font-size: 0.95rem;
       }
 
       .pricing-features li:last-child {
@@ -615,6 +631,7 @@
       .pricing-features li i {
         color: var(--primary);
         font-size: 0.9rem;
+        min-width: 20px;
       }
 
       .pricing-features li.not-included {
@@ -626,9 +643,8 @@
         color: #cbd5e1;
       }
 
-      /* TRAINERS SECTION - Like Equinox */
+      /* Trainers */
       .trainers {
-        padding: 100px 0;
         background: var(--dark);
         color: white;
       }
@@ -677,7 +693,7 @@
 
       .trainer-social {
         position: absolute;
-        bottom: -50px;
+        bottom: 0;
         left: 0;
         width: 100%;
         display: flex;
@@ -685,11 +701,12 @@
         gap: 15px;
         padding: 20px;
         background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-        transition: bottom 0.3s;
+        transform: translateY(100%);
+        transition: transform 0.3s;
       }
 
       .trainer-card:hover .trainer-social {
-        bottom: 0;
+        transform: translateY(0);
       }
 
       .trainer-social a {
@@ -701,6 +718,7 @@
         align-items: center;
         justify-content: center;
         color: white;
+        font-size: 1.1rem;
         transition: transform 0.3s;
       }
 
@@ -724,22 +742,21 @@
         font-weight: 500;
       }
 
-      /* TESTIMONIALS - Like Barry's/SoulCycle */
+      /* Testimonials */
       .testimonials {
-        padding: 100px 0;
         background: #f8fafc;
       }
 
       .testimonial-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 30px;
         margin-top: 50px;
       }
 
       .testimonial-card {
         background: white;
-        padding: 40px;
+        padding: 40px 30px;
         border-radius: 20px;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
         position: relative;
@@ -749,8 +766,8 @@
         content: '"';
         position: absolute;
         top: 20px;
-        left: 30px;
-        font-size: 6rem;
+        right: 30px;
+        font-size: 5rem;
         color: var(--primary);
         opacity: 0.1;
         font-family: serif;
@@ -767,7 +784,7 @@
         color: var(--gray);
         margin-bottom: 25px;
         line-height: 1.8;
-        font-size: 1.05rem;
+        font-size: 1rem;
       }
 
       .testimonial-author {
@@ -787,6 +804,7 @@
       .author-info h4 {
         color: var(--dark);
         margin-bottom: 3px;
+        font-size: 1.1rem;
       }
 
       .author-info span {
@@ -801,13 +819,12 @@
         padding: 5px 12px;
         border-radius: 20px;
         font-size: 0.85rem;
-        margin-top: 10px;
+        margin-top: 8px;
         font-weight: 600;
       }
 
-      /* GALLERY - Instagram style */
+      /* Gallery */
       .gallery {
-        padding: 100px 0;
         background: white;
       }
 
@@ -844,7 +861,7 @@
         align-items: center;
         justify-content: center;
         opacity: 0;
-        transition: all 0.3s;
+        transition: opacity 0.3s;
       }
 
       .gallery-item:hover .gallery-overlay {
@@ -860,9 +877,8 @@
         font-size: 2rem;
       }
 
-      /* FAQ - Accordion style */
+      /* FAQ */
       .faq {
-        padding: 100px 0;
         background: #f8fafc;
       }
 
@@ -881,7 +897,7 @@
       }
 
       .faq-question {
-        padding: 25px 30px;
+        padding: 20px 25px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -889,6 +905,8 @@
         font-weight: 600;
         color: var(--dark);
         transition: all 0.3s;
+        font-size: 1rem;
+        gap: 15px;
       }
 
       .faq-question:hover {
@@ -898,6 +916,7 @@
       .faq-question i {
         transition: transform 0.3s;
         color: var(--primary);
+        min-width: 20px;
       }
 
       .faq-item.active .faq-question i {
@@ -908,22 +927,22 @@
         max-height: 0;
         overflow: hidden;
         transition: all 0.3s;
-        padding: 0 30px;
+        padding: 0 25px;
       }
 
       .faq-item.active .faq-answer {
-        max-height: 200px;
-        padding-bottom: 25px;
+        max-height: 300px;
+        padding-bottom: 20px;
       }
 
       .faq-answer p {
         color: var(--gray);
         line-height: 1.7;
+        font-size: 0.95rem;
       }
 
-      /* CONTACT ENHANCED */
+      /* Contact */
       .contact {
-        padding: 100px 0;
         text-align: center;
         background: linear-gradient(to bottom, white, #f8fafc);
       }
@@ -943,7 +962,7 @@
         margin-bottom: 20px;
       }
 
-      .contact-info p {
+      .contact-info > p {
         color: var(--gray);
         margin-bottom: 30px;
         line-height: 1.8;
@@ -965,6 +984,8 @@
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         transition: all 0.3s;
         border: 1px solid var(--gray-light);
+        text-decoration: none;
+        color: inherit;
       }
 
       .contact-item:hover {
@@ -975,6 +996,7 @@
       .contact-item i {
         width: 50px;
         height: 50px;
+        min-width: 50px;
         background: rgba(255, 77, 77, 0.1);
         border-radius: 12px;
         display: flex;
@@ -993,11 +1015,7 @@
       .contact-item div span {
         color: var(--gray);
         font-size: 0.95rem;
-      }
-
-      .contact-item a {
-        color: inherit;
-        text-decoration: none;
+        word-break: break-word;
       }
 
       form {
@@ -1019,8 +1037,9 @@
         border-radius: 12px;
         border: 2px solid var(--gray-light);
         font-family: "Poppins", sans-serif;
-        font-size: 1rem;
+        font-size: 16px; /* Prevents zoom on iOS */
         transition: all 0.3s;
+        background: white;
       }
 
       input:focus,
@@ -1036,17 +1055,17 @@
         min-height: 120px;
       }
 
-      /* NEWSLETTER */
+      /* Newsletter */
       .newsletter {
         background: var(--primary);
-        padding: 80px 0;
+        padding: 60px 0;
         text-align: center;
         color: white;
       }
 
       .newsletter h2 {
         color: white;
-        font-size: 2.5rem;
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
         margin-bottom: 15px;
       }
 
@@ -1067,15 +1086,16 @@
       .newsletter-form input {
         flex: 1;
         border: none;
-        padding: 18px 25px;
+        padding: 16px 24px;
+        border-radius: 50px;
       }
 
       .newsletter-form button {
         background: var(--dark);
         color: white;
         border: none;
-        padding: 18px 35px;
-        border-radius: 12px;
+        padding: 16px 32px;
+        border-radius: 50px;
         font-weight: 600;
         cursor: pointer;
         transition: all 0.3s;
@@ -1087,7 +1107,7 @@
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
       }
 
-      /* FOOTER ENHANCED */
+      /* Footer */
       footer {
         background: var(--dark);
         color: white;
@@ -1096,7 +1116,7 @@
 
       .footer-content {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 40px;
         margin-bottom: 40px;
       }
@@ -1117,6 +1137,7 @@
         color: rgba(255, 255, 255, 0.7);
         line-height: 1.8;
         margin-bottom: 20px;
+        font-size: 0.95rem;
       }
 
       .social-links {
@@ -1134,6 +1155,7 @@
         justify-content: center;
         color: white;
         transition: all 0.3s;
+        font-size: 1.1rem;
       }
 
       .social-links a:hover {
@@ -1162,6 +1184,8 @@
         display: flex;
         align-items: center;
         gap: 8px;
+        font-size: 0.95rem;
+        word-break: break-word;
       }
 
       .footer-links a:hover {
@@ -1177,7 +1201,7 @@
         font-size: 0.9rem;
       }
 
-      /* FLOATING BUTTONS */
+      /* Floating Buttons */
       .floating-buttons {
         position: fixed;
         bottom: 30px;
@@ -1197,28 +1221,56 @@
         justify-content: center;
         text-decoration: none;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        transition: all 0.3s ease;
+        transition: all 0.3s;
         position: relative;
         font-size: 1.5rem;
         color: white;
+        border: none;
       }
 
       .floating-btn:hover {
-        transform: scale(1.1) rotate(5deg);
+        transform: scale(1.1);
       }
 
-      .whatsapp-btn {
+      .whatsapp-float {
         background-color: var(--success);
+        animation: pulse-green 2s infinite;
       }
 
-      .email-btn {
+      .email-float {
         background-color: var(--email);
+        animation: pulse-red 2s infinite;
+        animation-delay: 1s;
+      }
+
+      @keyframes pulse-green {
+        0% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+        }
+      }
+
+      @keyframes pulse-red {
+        0% {
+          box-shadow: 0 0 0 0 rgba(234, 67, 53, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 15px rgba(234, 67, 53, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(234, 67, 53, 0);
+        }
       }
 
       .floating-btn::before {
         content: attr(data-tooltip);
         position: absolute;
-        right: 75px;
+        right: 70px;
         background: var(--dark);
         color: white;
         padding: 10px 20px;
@@ -1227,9 +1279,9 @@
         white-space: nowrap;
         opacity: 0;
         visibility: hidden;
-        transition: all 0.3s ease;
+        transition: all 0.3s;
         font-weight: 500;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        pointer-events: none;
       }
 
       .floating-btn:hover::before {
@@ -1237,7 +1289,7 @@
         visibility: visible;
       }
 
-      /* STICKY MOBILE CTA */
+      /* Mobile Sticky CTA */
       .mobile-sticky {
         display: none;
         position: fixed;
@@ -1245,10 +1297,11 @@
         left: 0;
         width: 100%;
         background: white;
-        padding: 15px 20px;
+        padding: 12px 20px;
         box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
         z-index: 9998;
         gap: 10px;
+        border-top: 1px solid var(--gray-light);
       }
 
       .mobile-sticky a {
@@ -1258,31 +1311,23 @@
         border-radius: 10px;
         font-weight: 600;
         font-size: 0.95rem;
+        text-decoration: none;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
       }
 
       .mobile-sticky .btn-call {
         background: var(--dark);
-        color: white;
       }
 
       .mobile-sticky .btn-whatsapp {
         background: var(--success);
-        color: white;
       }
 
-      /* ANIMATIONS */
-      .reveal {
-        opacity: 0;
-        transform: translateY(50px);
-        transition: all 0.8s ease;
-      }
-
-      .reveal.active {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* BACK TO TOP */
+      /* Back to Top */
       .back-to-top {
         position: fixed;
         bottom: 30px;
@@ -1301,6 +1346,8 @@
         transition: all 0.3s;
         z-index: 999;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        border: none;
+        font-size: 1.2rem;
       }
 
       .back-to-top.active {
@@ -1313,13 +1360,107 @@
         transform: translateY(-5px);
       }
 
-      /* RESPONSIVE */
-      @media (max-width: 968px) {
-        .hero h1 {
-          font-size: 2.5rem;
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease;
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ==================== RESPONSIVE BREAKPOINTS ==================== */
+
+      /* Tablet (768px - 1024px) */
+      @media (max-width: 1024px) {
+        .about-content,
+        .contact-wrapper {
+          gap: 40px;
         }
 
-        .about-content {
+        .experience-badge {
+          left: 20px;
+          bottom: 20px;
+        }
+      }
+
+      /* Mobile (up to 768px) */
+      @media (max-width: 768px) {
+        /* Navigation Mobile */
+        .menu-toggle {
+          display: flex;
+        }
+
+        .nav-links {
+          position: fixed;
+          top: 70px;
+          left: 0;
+          width: 100%;
+          background: rgba(15, 23, 42, 0.98);
+          flex-direction: column;
+          padding: 20px;
+          gap: 0;
+          transform: translateY(-150%);
+          opacity: 0;
+          pointer-events: none;
+        }
+
+        .nav-links.active {
+          transform: translateY(0);
+          opacity: 1;
+          pointer-events: all;
+        }
+
+        .nav-links a {
+          padding: 15px 0;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          width: 100%;
+          text-align: center;
+        }
+
+        .nav-btn {
+          margin-top: 10px;
+          text-align: center;
+        }
+
+        /* Hero Mobile */
+        .hero {
+          min-height: auto;
+          padding: 120px 20px 80px;
+        }
+
+        .hero h1 {
+          font-size: 2.2rem;
+        }
+
+        .hero-badge {
+          font-size: 0.8rem;
+          padding: 6px 16px;
+        }
+
+        .trust-badges {
+          flex-direction: column;
+          gap: 15px;
+          align-items: center;
+        }
+
+        /* Layout Mobile */
+        .about-content,
+        .contact-wrapper {
           grid-template-columns: 1fr;
         }
 
@@ -1328,60 +1469,47 @@
         }
 
         .experience-badge {
-          left: 20px;
-          bottom: 20px;
+          position: relative;
+          left: 0;
+          bottom: 0;
+          margin-top: 20px;
+          display: inline-block;
         }
 
-        .contact-wrapper {
+        /* Grids Mobile */
+        .cards,
+        .trainers-grid,
+        .testimonial-grid,
+        .gallery-grid,
+        .footer-content {
           grid-template-columns: 1fr;
+        }
+
+        .pricing-grid {
+          grid-template-columns: 1fr;
+          max-width: 400px;
         }
 
         .pricing-card.featured {
           transform: none;
+          order: -1;
         }
 
-        .nav-links {
-          gap: 20px;
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 30px 20px;
         }
 
-        .nav-links a:not(.nav-btn) {
-          display: none;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .hero h1 {
-          font-size: 2rem;
+        /* Contact Mobile */
+        form {
+          padding: 30px 20px;
         }
 
-        .hero-badge {
-          font-size: 0.8rem;
+        .contact-item:hover {
+          transform: none;
         }
 
-        .section-header h2 {
-          font-size: 2rem;
-        }
-
-        .trust-badges {
-          gap: 20px;
-          flex-direction: column;
-        }
-
-        .floating-buttons {
-          bottom: 80px;
-          right: 20px;
-        }
-
-        .floating-btn {
-          width: 50px;
-          height: 50px;
-          font-size: 1.2rem;
-        }
-
-        .mobile-sticky {
-          display: flex;
-        }
-
+        /* Newsletter Mobile */
         .newsletter-form {
           flex-direction: column;
         }
@@ -1390,18 +1518,120 @@
           width: 100%;
         }
 
+        /* Floating Buttons Mobile */
+        .floating-buttons {
+          bottom: 100px;
+          right: 20px;
+        }
+
+        .floating-btn {
+          width: 55px;
+          height: 55px;
+          font-size: 1.3rem;
+        }
+
+        .floating-btn::before {
+          display: none;
+        }
+
+        .mobile-sticky {
+          display: flex;
+        }
+
         .back-to-top {
-          bottom: 80px;
+          bottom: 100px;
+          left: 20px;
+        }
+
+        /* Section Spacing */
+        .section {
+          padding: 60px 0;
+        }
+
+        .section-header h2 {
+          font-size: 1.8rem;
+        }
+
+        /* Touch Targets */
+        .faq-question {
+          min-height: 60px;
+        }
+
+        .pricing-features li {
+          min-height: 44px;
+        }
+      }
+
+      /* Small Mobile (up to 375px) */
+      @media (max-width: 375px) {
+        .hero h1 {
+          font-size: 1.9rem;
+        }
+
+        .hero-cta {
+          flex-direction: column;
+          width: 100%;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .stat-number {
+          font-size: 2rem;
+        }
+
+        .price {
+          font-size: 2.5rem;
+        }
+
+        .trainer-image {
+          height: 250px;
+        }
+
+        .footer-links a {
+          font-size: 0.9rem;
+        }
+      }
+
+      /* Large Desktop (1440px+) */
+      @media (min-width: 1440px) {
+        .container {
+          max-width: 1400px;
+        }
+
+        .hero h1 {
+          font-size: 4.5rem;
+        }
+      }
+
+      /* Accessibility - Reduce Motion */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
         }
       }
     </style>
   </head>
   <body>
-    <!-- NAVBAR -->
+    <!-- Navigation -->
     <header class="navbar">
       <div class="container nav-container">
         <h2 class="logo"><i class="fas fa-dumbbell"></i> FitZone</h2>
-        <nav class="nav-links">
+
+        <button
+          class="menu-toggle"
+          onclick="toggleMenu()"
+          aria-label="Toggle Menu"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <nav class="nav-links" id="navLinks">
           <a href="#home">Home</a>
           <a href="#about">About</a>
           <a href="#services">Services</a>
@@ -1412,11 +1642,11 @@
       </div>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- Hero Section -->
     <section id="home" class="hero">
       <div class="hero-content">
         <span class="hero-badge"
-          ><i class="fas fa-fire"></i> #1 Gym in the City</span
+          ><i class="fas fa-fire"></i> #1 Gym in Mumbai</span
         >
         <h1>Transform Your Body in <span>90 Days</span></h1>
         <p>
@@ -1426,8 +1656,14 @@
         </p>
 
         <div class="hero-cta">
-          <a href="#pricing" class="btn-primary">Start Free Trial</a>
-          <a href="#about" class="btn-secondary">Learn More</a>
+          <a
+            href="https://wa.me/919978977180?text=Hi%2C%20I'm%20interested%20in%20starting%20my%20fitness%20journey%20at%20FitZone"
+            target="_blank"
+            class="btn-primary"
+          >
+            <i class="fab fa-whatsapp"></i> Start Free Trial
+          </a>
+          <a href="#services" class="btn-secondary">Learn More</a>
         </div>
 
         <div class="trust-badges">
@@ -1451,7 +1687,7 @@
       </div>
     </section>
 
-    <!-- STATS SECTION -->
+    <!-- Stats Section -->
     <section class="stats">
       <div class="container">
         <div class="stats-grid">
@@ -1475,8 +1711,8 @@
       </div>
     </section>
 
-    <!-- ABOUT SECTION -->
-    <section id="about" class="about">
+    <!-- About Section -->
+    <section id="about" class="section about">
       <div class="container">
         <div class="about-content">
           <div class="about-text reveal">
@@ -1497,23 +1733,19 @@
 
             <div class="about-features">
               <div class="feature-item">
-                <div class="feature-icon">
-                  <i class="fas fa-heartbeat"></i>
-                </div>
+                <div class="feature-icon"><i class="fas fa-heartbeat"></i></div>
                 <div>
                   <h4>Personalized Plans</h4>
-                  <p style="margin: 0; font-size: 0.9rem">
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray)">
                     Tailored to your body goals
                   </p>
                 </div>
               </div>
               <div class="feature-item">
-                <div class="feature-icon">
-                  <i class="fas fa-medal"></i>
-                </div>
+                <div class="feature-icon"><i class="fas fa-medal"></i></div>
                 <div>
                   <h4>Proven Results</h4>
-                  <p style="margin: 0; font-size: 0.9rem">
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray)">
                     90-day transformation guarantee
                   </p>
                 </div>
@@ -1524,13 +1756,14 @@
                 </div>
                 <div>
                   <h4>Community Support</h4>
-                  <p style="margin: 0; font-size: 0.9rem">
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--gray)">
                     Train with like-minded people
                   </p>
                 </div>
               </div>
             </div>
           </div>
+
           <div class="about-image reveal">
             <img
               src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800"
@@ -1545,8 +1778,8 @@
       </div>
     </section>
 
-    <!-- SERVICES SECTION -->
-    <section id="services" class="services">
+    <!-- Services Section -->
+    <section id="services" class="section services">
       <div class="container">
         <div class="section-header reveal">
           <h2>Our Services</h2>
@@ -1558,9 +1791,7 @@
 
         <div class="cards">
           <div class="card reveal">
-            <div class="card-icon">
-              <i class="fas fa-user-ninja"></i>
-            </div>
+            <div class="card-icon"><i class="fas fa-user-ninja"></i></div>
             <h3>Personal Training</h3>
             <p>
               One-on-one coaching with certified experts who design workouts
@@ -1568,9 +1799,7 @@
             </p>
           </div>
           <div class="card reveal">
-            <div class="card-icon">
-              <i class="fas fa-apple-alt"></i>
-            </div>
+            <div class="card-icon"><i class="fas fa-apple-alt"></i></div>
             <h3>Nutrition Planning</h3>
             <p>
               Custom meal plans and dietary guidance to fuel your workouts and
@@ -1578,9 +1807,7 @@
             </p>
           </div>
           <div class="card reveal">
-            <div class="card-icon">
-              <i class="fas fa-users"></i>
-            </div>
+            <div class="card-icon"><i class="fas fa-users"></i></div>
             <h3>Group Classes</h3>
             <p>
               High-energy sessions from Yoga to HIIT. Train with others and stay
@@ -1588,9 +1815,7 @@
             </p>
           </div>
           <div class="card reveal">
-            <div class="card-icon">
-              <i class="fas fa-running"></i>
-            </div>
+            <div class="card-icon"><i class="fas fa-running"></i></div>
             <h3>Cardio Zone</h3>
             <p>
               State-of-the-art treadmills, bikes, and rowing machines with
@@ -1601,8 +1826,8 @@
       </div>
     </section>
 
-    <!-- PRICING SECTION -->
-    <section id="pricing" class="pricing">
+    <!-- Pricing Section -->
+    <section id="pricing" class="section pricing">
       <div class="container">
         <div class="section-header reveal">
           <h2>Membership Plans</h2>
@@ -1616,8 +1841,9 @@
           <div class="pricing-card reveal">
             <h3>Basic</h3>
             <div class="price">
-              <span>₹</span>1,499
-              <div class="period">/month</div>
+              <span class="currency">₹</span>1,499<span class="period"
+                >/month</span
+              >
             </div>
             <ul class="pricing-features">
               <li><i class="fas fa-check"></i> Gym Access (6 AM - 10 PM)</li>
@@ -1632,7 +1858,8 @@
               </li>
             </ul>
             <a
-              href="#contact"
+              href="https://wa.me/919978977180?text=I'm%20interested%20in%20the%20Basic%20plan"
+              target="_blank"
               class="btn-secondary"
               style="width: 100%; display: block; text-align: center"
               >Get Started</a
@@ -1643,8 +1870,9 @@
             <div class="pricing-badge">MOST POPULAR</div>
             <h3>Pro</h3>
             <div class="price">
-              <span>₹</span>2,499
-              <div class="period">/month</div>
+              <span class="currency">₹</span>2,499<span class="period"
+                >/month</span
+              >
             </div>
             <ul class="pricing-features">
               <li><i class="fas fa-check"></i> 24/7 Gym Access</li>
@@ -1657,7 +1885,8 @@
               </li>
             </ul>
             <a
-              href="#contact"
+              href="https://wa.me/919978977180?text=I'm%20interested%20in%20the%20Pro%20plan"
+              target="_blank"
               class="btn-primary"
               style="
                 width: 100%;
@@ -1672,8 +1901,9 @@
           <div class="pricing-card reveal">
             <h3>Elite</h3>
             <div class="price">
-              <span>₹</span>3,999
-              <div class="period">/month</div>
+              <span class="currency">₹</span>3,999<span class="period"
+                >/month</span
+              >
             </div>
             <ul class="pricing-features">
               <li><i class="fas fa-check"></i> Everything in Pro</li>
@@ -1684,7 +1914,8 @@
               <li><i class="fas fa-check"></i> Recovery Zone Access</li>
             </ul>
             <a
-              href="#contact"
+              href="https://wa.me/919978977180?text=I'm%20interested%20in%20the%20Elite%20plan"
+              target="_blank"
               class="btn-secondary"
               style="width: 100%; display: block; text-align: center"
               >Get Started</a
@@ -1694,14 +1925,14 @@
       </div>
     </section>
 
-    <!-- TRAINERS SECTION -->
-    <section id="trainers" class="trainers">
+    <!-- Trainers Section -->
+    <section id="trainers" class="section trainers">
       <div class="container">
         <div class="section-header reveal">
           <h2>Expert Trainers</h2>
           <p>
-            Learn from the best. Our certified trainers are dedicated to helping
-            you reach your potential.
+            Learn from the best. Our certified trainers are dedicated to your
+            success.
           </p>
         </div>
 
@@ -1713,9 +1944,12 @@
                 alt="Trainer"
               />
               <div class="trainer-social">
+                <a
+                  href="https://wa.me/919978977180?text=I%20want%20to%20train%20with%20Rahul%20Sharma"
+                  target="_blank"
+                  ><i class="fab fa-whatsapp"></i
+                ></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fas fa-envelope"></i></a>
               </div>
             </div>
             <div class="trainer-info">
@@ -1731,9 +1965,12 @@
                 alt="Trainer"
               />
               <div class="trainer-social">
+                <a
+                  href="https://wa.me/919978977180?text=I%20want%20to%20join%20Priya%20Patel's%20Yoga%20classes"
+                  target="_blank"
+                  ><i class="fab fa-whatsapp"></i
+                ></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fas fa-envelope"></i></a>
               </div>
             </div>
             <div class="trainer-info">
@@ -1749,9 +1986,12 @@
                 alt="Trainer"
               />
               <div class="trainer-social">
+                <a
+                  href="https://wa.me/919978977180?text=I%20want%20to%20train%20with%20Vikram%20Singh"
+                  target="_blank"
+                  ><i class="fab fa-whatsapp"></i
+                ></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fas fa-envelope"></i></a>
               </div>
             </div>
             <div class="trainer-info">
@@ -1767,9 +2007,12 @@
                 alt="Trainer"
               />
               <div class="trainer-social">
+                <a
+                  href="https://wa.me/919978977180?text=I%20need%20nutrition%20consultation%20with%20Ananya%20Gupta"
+                  target="_blank"
+                  ><i class="fab fa-whatsapp"></i
+                ></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fas fa-envelope"></i></a>
               </div>
             </div>
             <div class="trainer-info">
@@ -1781,8 +2024,8 @@
       </div>
     </section>
 
-    <!-- TESTIMONIALS -->
-    <section id="testimonials" class="testimonials">
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section testimonials">
       <div class="container">
         <div class="section-header reveal">
           <h2>Success Stories</h2>
@@ -1795,11 +2038,9 @@
         <div class="testimonial-grid">
           <div class="testimonial-card reveal">
             <div class="stars">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i>
             </div>
             <p class="testimonial-text">
               "Lost 20kg in 4 months! The trainers here don't just push you;
@@ -1823,11 +2064,9 @@
 
           <div class="testimonial-card reveal">
             <div class="stars">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i>
             </div>
             <p class="testimonial-text">
               "The community here is incredible. I was intimidated at first, but
@@ -1851,11 +2090,9 @@
 
           <div class="testimonial-card reveal">
             <div class="stars">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star-half-alt"></i>
+              <i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star-half-alt"></i>
             </div>
             <p class="testimonial-text">
               "As a busy professional, the 24/7 access is a lifesaver. The
@@ -1880,8 +2117,8 @@
       </div>
     </section>
 
-    <!-- GALLERY SECTION -->
-    <section id="gallery" class="gallery">
+    <!-- Gallery Section -->
+    <section id="gallery" class="section gallery">
       <div class="container">
         <div class="section-header reveal">
           <h2>Inside FitZone</h2>
@@ -1937,8 +2174,8 @@
       </div>
     </section>
 
-    <!-- FAQ SECTION -->
-    <section id="faq" class="faq">
+    <!-- FAQ Section -->
+    <section id="faq" class="section faq">
       <div class="container">
         <div class="section-header reveal">
           <h2>Frequently Asked Questions</h2>
@@ -2004,8 +2241,8 @@
       </div>
     </section>
 
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="contact">
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
       <div class="container">
         <div class="section-header reveal">
           <h2>Start Your Journey</h2>
@@ -2083,6 +2320,7 @@
               <textarea
                 name="message"
                 placeholder="Your Message (Optional)"
+                rows="4"
               ></textarea>
             </div>
             <button
@@ -2108,7 +2346,7 @@
       </div>
     </section>
 
-    <!-- NEWSLETTER -->
+    <!-- Newsletter -->
     <section class="newsletter">
       <div class="container">
         <h2 class="reveal">Join Our Fitness Community</h2>
@@ -2129,7 +2367,7 @@
       </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- Footer -->
     <footer>
       <div class="container">
         <div class="footer-content">
@@ -2137,13 +2375,21 @@
             <h3><i class="fas fa-dumbbell"></i> FitZone</h3>
             <p>
               Transforming lives through fitness since 2012. Join the #1 gym in
-              the city and start your journey today.
+              Mumbai and start your journey today.
             </p>
             <div class="social-links">
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-              <a href="#"><i class="fab fa-youtube"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="YouTube"
+                ><i class="fab fa-youtube"></i
+              ></a>
+              <a href="#" aria-label="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
             </div>
           </div>
           <div class="footer-links">
@@ -2153,15 +2399,6 @@
               <li><a href="#about">About Us</a></li>
               <li><a href="#services">Services</a></li>
               <li><a href="#pricing">Pricing</a></li>
-            </ul>
-          </div>
-          <div class="footer-links">
-            <h4>Services</h4>
-            <ul>
-              <li><a href="#">Personal Training</a></li>
-              <li><a href="#">Group Classes</a></li>
-              <li><a href="#">Nutrition Plans</a></li>
-              <li><a href="#">Online Coaching</a></li>
             </ul>
           </div>
           <div class="footer-links">
@@ -2195,48 +2432,72 @@
       </div>
     </footer>
 
-    <!-- FLOATING BUTTONS -->
+    <!-- Floating Action Buttons -->
     <div class="floating-buttons">
       <a
         href="mailto:varunshah163@gmail.com"
-        class="floating-btn email-btn"
+        class="floating-btn email-float"
         data-tooltip="Send Email"
         aria-label="Email"
       >
         <i class="fas fa-envelope"></i>
       </a>
       <a
-        href="https://wa.me/919978977180?text=Hi%2C%20I%27m%20interested%20in%20joining%20FitZone%20Gym.%20Can%20you%20provide%20more%20information%3F"
-        class="floating-btn whatsapp-btn"
-        data-tooltip="Chat on WhatsApp"
+        href="https://wa.me/919978977180?text=Hi%2C%20I'm%20interested%20in%20joining%20FitZone%20Gym"
         target="_blank"
-        rel="noopener noreferrer"
+        class="floating-btn whatsapp-float"
+        data-tooltip="Chat on WhatsApp"
         aria-label="WhatsApp"
       >
         <i class="fab fa-whatsapp"></i>
       </a>
     </div>
 
-    <!-- MOBILE STICKY CTA -->
+    <!-- Mobile Sticky CTA -->
     <div class="mobile-sticky">
       <a href="tel:+919978977180" class="btn-call"
         ><i class="fas fa-phone"></i> Call Now</a
       >
-      <a href="https://wa.me/919978977180" class="btn-whatsapp"
+      <a href="https://wa.me/919978977180" target="_blank" class="btn-whatsapp"
         ><i class="fab fa-whatsapp"></i> WhatsApp</a
       >
     </div>
 
-    <!-- BACK TO TOP -->
-    <div
+    <!-- Back to Top -->
+    <button
       class="back-to-top"
       onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+      aria-label="Back to top"
     >
       <i class="fas fa-arrow-up"></i>
-    </div>
+    </button>
 
     <script>
-      // Intersection Observer for scroll animations
+      // Mobile Menu Toggle
+      function toggleMenu() {
+        const navLinks = document.getElementById("navLinks");
+        const menuBtn = document.querySelector(".menu-toggle i");
+        navLinks.classList.toggle("active");
+
+        if (navLinks.classList.contains("active")) {
+          menuBtn.classList.remove("fa-bars");
+          menuBtn.classList.add("fa-times");
+        } else {
+          menuBtn.classList.remove("fa-times");
+          menuBtn.classList.add("fa-bars");
+        }
+      }
+
+      // Close menu when clicking on links
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          document.getElementById("navLinks").classList.remove("active");
+          document.querySelector(".menu-toggle i").classList.remove("fa-times");
+          document.querySelector(".menu-toggle i").classList.add("fa-bars");
+        });
+      });
+
+      // Intersection Observer for animations
       const observerOptions = {
         threshold: 0.1,
         rootMargin: "0px 0px -50px 0px",
@@ -2321,6 +2582,15 @@
             btn.disabled = false;
           }, 2000);
         });
+
+      // Handle resize for nav
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 768) {
+          document.getElementById("navLinks").classList.remove("active");
+          document.querySelector(".menu-toggle i").classList.remove("fa-times");
+          document.querySelector(".menu-toggle i").classList.add("fa-bars");
+        }
+      });
     </script>
   </body>
 </html>
